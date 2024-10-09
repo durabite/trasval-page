@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+---
+
+<section class="py-12 bg-white">
+  <div class="container-fixed">
+    <h2 class="text-3xl font-bold mb-4 text-left text-azul-trasval">Servicios</h2>
+    <p class="text-left text-lg mb-8">
+      Contamos con un servicio integral a lo largo y ancho de la república mexicana.
+    </p>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="service-card">
+        <Image
+          src="/images/Servicios Traslados.png"
+          alt="Servicio de Traslados"
+          width={400}
+          height={300}
+          class="object-cover w-full h-full"
+        />
+        <div class="service-card-content">
+          <h3 class="text-2xl font-bold mb-4">TRASLADOS</h3>
+          <button class="bg-transparent text-white border-white border-2 px-4 py-2 rounded hover:bg-white hover:text-azul-trasval transition-colors duration-300">
+            Ver más
+          </button>
+        </div>
+      </div>
+      <div class="service-card">
+        <Image
+          src="/images/Servicios Resguardo.png"
+          alt="Servicio de Resguardo"
+          width={400}
+          height={300}
+          class="object-cover w-full h-full"
+        />
+        <div class="service-card-content">
+          <h3 class="text-2xl font-bold mb-4">RESGUARDO</h3>
+          <button class="bg-transparent text-white border-white border-2 px-4 py-2 rounded hover:bg-white hover:text-azul-trasval transition-colors duration-300">
+            Ver más
+          </button>
+        </div>
+      </div>
+      <div class="service-card">
+        <Image
+          src="/images/Servicios Carga.png"
+          alt="Servicio de Carga"
+          width={400}
+          height={300}
+          class="object-cover w-full h-full"
+        />
+        <div class="service-card-content">
+          <h3 class="text-2xl font-bold mb-4">CARGA</h3>
+          <button class="bg-transparent text-white border-white border-2 px-4 py-2 rounded hover:bg-white hover:text-azul-trasval transition-colors duration-300">
+            Ver más
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    height: 300px;
+  }
+  .service-card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+</style>

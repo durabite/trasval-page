@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const iconos = [
+  { src: "/images/icons/cdmx-mty.png", alt: "CDMX y Monterrey" },
+  { src: "/images/icons/security.png", alt: "Seguridad" },
+  { src: "/images/icons/24-hours.png", alt: "Servicio 24 horas" },
+  { src: "/images/icons/camera.png", alt: "Vigilancia por cámara" }
+];
+
+const imagenes = [
+  { src: "/images/patio-cdmx.png", alt: "Patio de resguardo CDMX" },
+  { src: "/images/patio-mty.png", alt: "Patio de resguardo Monterrey" }
+];
+---
+
+<Layout title="Resguardo - Traslados Valencia">
+  <Header />
+  
+  <main class="flex-grow">
+    <div class="container-fixed mx-auto py-8">
+      <h1 class="text-4xl font-bold text-[var(--azul-trasval)] mb-4 text-left">Patios de Resguardo</h1>
+      <div class="w-full h-1 bg-[var(--azul-trasval)] mb-8"></div>
+      
+      <p class="text-lg text-center mb-8">
+        Disponemos de <span class="font-bold">patios de resguardo</span> en la <span class="font-bold">Ciudad de México y Monterrey</span>, ambos con
+        <span class="font-bold">vigilancia privada</span> y <span class="font-bold">monitoreo 24 horas</span> mediante circuito cerrado. Los clientes pueden dejar
+        sus unidades en resguardo por el tiempo necesario, con <span class="font-bold">tarifas diarias accesibles</span> y <span class="font-bold">monitoreo
+        en tiempo real</span>.
+      </p>
+
+      <div class="flex justify-center space-x-8 mb-8">
+        {iconos.map((icono) => (
+          <div class="w-16 h-16">
+            <img src={icono.src} alt={icono.alt} width="64" height="64" />
+          </div>
+        ))}
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {imagenes.map((imagen) => (
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img src={imagen.src} alt={imagen.alt} class="w-full h-auto" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  :root {
+    --azul-trasval: #00438E;
+    --cielo-trasval: #007DB8;
+  }
+  .container-fixed {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+</style>

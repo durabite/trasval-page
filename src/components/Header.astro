@@ -1,0 +1,123 @@
+---
+import { Image } from 'astro:assets';
+---
+
+<header class="py-3 bg-[#00438E] text-white sticky top-0 z-50">
+  <div class="container-fixed mx-auto px-4">
+    <div class="flex items-center justify-between">
+      <a href="/" class="w-32 sm:w-48 h-12 sm:h-16 relative block">
+        <Image
+          src="/images/Logo Trasval Blanco.png"
+          alt="Logo Traslados Valencia"
+          width={192}
+          height={64}
+          class="object-contain w-full h-full"
+        />
+      </a>
+      <nav class="hidden lg:flex space-x-4">
+        <a href="/traslados" class="nav-link"><i class="mdi mdi-truck-fast-outline mr-1"></i>TRASLADOS</a>
+        <a href="/resguardo" class="nav-link"><i class="mdi mdi-security mr-1"></i>RESGUARDO</a>
+        <a href="/carga" class="nav-link"><i class="mdi mdi-package-variant-closed mr-1"></i>CARGA</a>
+        <a href="/nosotros" class="nav-link"><i class="mdi mdi-handshake-outline mr-1"></i>NOSOTROS</a>
+        <a href="/contacto" class="nav-link"><i class="mdi mdi-phone-outline mr-1"></i>CONTACTO</a>
+      </nav>
+      <button id="menuButton" class="lg:hidden flex items-center">
+        <span class="mr-2">MENÚ</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden bg-[#00438E] absolute top-full left-0 right-0">
+    <div class="container-fixed mx-auto px-4 py-2">
+      <a href="/traslados" class="block py-2 nav-link"><i class="mdi mdi-truck-fast-outline mr-2"></i>TRASLADOS</a>
+      <a href="/resguardo" class="block py-2 nav-link"><i class="mdi mdi-security mr-2"></i>RESGUARDO</a>
+      <a href="/carga" class="block py-2 nav-link"><i class="mdi mdi-package-variant-closed mr-2"></i>CARGA</a>
+      <a href="/nosotros" class="block py-2 nav-link"><i class="mdi mdi-handshake-outline mr-2"></i>NOSOTROS</a>
+      <a href="/contacto" class="block py-2 nav-link"><i class="mdi mdi-phone-outline mr-2"></i>CONTACTO</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  @import url('https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css');
+
+  .container-fixed {
+    max-width: 1200px;
+  }
+  .nav-link {
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: white;
+    transition: all 0.3s ease;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+    left: 0;
+  }
+  #menuButton {
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+  }
+  #menuButton:hover {
+    background-color: white;
+    color: #00438E;
+  }
+  #mobileMenu .nav-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  #mobileMenu .nav-link:last-child {
+    border-bottom: none;
+  }
+</style>
+
+<script>
+  const menuButton = document.getElementById('menuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  // Cerrar el menú móvil cuando se hace clic en un enlace
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+
+  // Cerrar el menú móvil cuando se hace clic fuera de él
+  document.addEventListener('click', (event) => {
+    const isClickInsideMenu = mobileMenu?.contains(event.target as Node);
+    const isClickOnMenuButton = menuButton?.contains(event.target as Node);
+    if (!isClickInsideMenu && !isClickOnMenuButton && !mobileMenu?.classList.contains('hidden')) {
+      mobileMenu?.classList.add('hidden');
+    }
+  });
+
+  // Ajustar el menú en caso de cambio de tamaño de la ventana
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+      mobileMenu?.classList.add('hidden');
+    }
+  });
+</script>

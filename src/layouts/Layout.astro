@@ -1,0 +1,63 @@
+---
+import { siteMetadata } from '../config';
+import SocialMetaTags from '../components/SocialMetaTags.astro';
+
+const { title, description, image, siteUrl } = siteMetadata;
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">
+    <link rel="preload" as="image" href="/images/Logo Trasval Blanco.png">
+    <SocialMetaTags 
+      title={title}
+      description={description}
+      image={image}
+      url={canonicalURL}
+    />
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --azul-trasval: #00438E;
+    --cielo-trasval: #007DB8;
+    --secondary-color: #6c757d;
+    --accent-color: #ffc107;
+    --transition-duration: 300ms;
+    --transition-timing: ease-in-out;
+  }
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .container-fixed {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  main {
+    flex: 1 0 auto;
+  }
+  footer {
+    flex-shrink: 0;
+  }
+</style>

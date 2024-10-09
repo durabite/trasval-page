@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const servicios = [
+  {
+    titulo: "Carga General",
+    descripcion: "Transporte de mercancías diversas en camiones de caja seca o plataforma.",
+    imagen: "/images/carga-general.png"
+  },
+  {
+    titulo: "Carga Especializada",
+    descripcion: "Manejo de cargas que requieren equipo o manejo especial, como maquinaria pesada o productos químicos.",
+    imagen: "/images/carga-especializada.png"
+  }
+];
+
+const caracteristicas = [
+  { icono: "/images/icons/cobertura-nacional.png", texto: "Cobertura Nacional" },
+  { icono: "/images/icons/seguimiento-tiempo-real.png", texto: "Seguimiento en Tiempo Real" },
+  { icono: "/images/icons/seguridad.png", texto: "Máxima Seguridad" },
+  { icono: "/images/icons/puntualidad.png", texto: "Puntualidad Garantizada" }
+];
+---
+
+<Layout title="Transporte de Carga - Traslados Valencia">
+  <Header />
+  
+  <main class="flex-grow">
+    <div class="container-fixed mx-auto py-8">
+      <h1 class="text-4xl font-bold text-[var(--azul-trasval)] mb-4 text-left">Transporte de carga general</h1>
+      <div class="w-full h-1 bg-[var(--azul-trasval)] mb-8"></div>
+      
+      <p class="text-lg text-center mb-8">
+        En Trasval, te ofrecemos soluciones de transporte de carga general en caja seca y plataforma, con diferentes capacidades para adaptarnos a tus necesidades. Contamos con unidades propias y alianzas estratégicas que nos permiten brindarte un servicio flexible, seguro y con cobertura nacional.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        {servicios.map((servicio) => (
+          <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+            <img src={servicio.imagen} alt={servicio.titulo} class="w-full h-48 object-cover" />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-[var(--azul-trasval)] mb-2">{servicio.titulo}</h3>
+              <p class="text-gray-700">{servicio.descripcion}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2 class="text-3xl font-bold text-[var(--azul-trasval)] mb-6 text-center">Características de nuestro servicio</h2>
+      <div class="grid grid-cols-2 md:flex md:justify-center md:space-x-8 gap-4 mb-12">
+        {caracteristicas.map((caracteristica) => (
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16">
+              <img src={caracteristica.icono} alt={caracteristica.texto} width="64" height="64" />
+            </div>
+            <p class="text-center font-semibold mt-2 text-sm md:text-base">{caracteristica.texto}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="bg-gray-100 rounded-lg p-8">
+        <h3 class="text-2xl font-bold text-[var(--azul-trasval)] mb-4">¿Por qué elegir nuestro servicio de carga?</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>Experiencia y profesionalismo en el manejo de todo tipo de carga</li>
+          <li>Flota moderna y bien mantenida para garantizar la seguridad de su mercancía</li>
+          <li>Soluciones personalizadas para satisfacer sus necesidades específicas</li>
+          <li>Tecnología de vanguardia para el seguimiento y la gestión de envíos</li>
+          <li>Compromiso con la puntualidad y la satisfacción del cliente</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  :root {
+    --azul-trasval: #00438E;
+    --cielo-trasval: #007DB8;
+  }
+  .container-fixed {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+</style>

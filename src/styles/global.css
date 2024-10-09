@@ -1,0 +1,20 @@
+@import url('https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css');
+
+:root {
+  --azul-trasval: #00438E;
+  --cielo-trasval: #007DB8;
+  --secondary-color: #6c757d;
+  --accent-color: #ffc107;
+  --transition-duration: 300ms;
+  --transition-timing: ease-in-out;
+}
+
+.container-fixed {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Aquí puedes agregar más estilos globales según sea necesario */
